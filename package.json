@@ -1,0 +1,11 @@
+{
+  "name": "path-tangents",
+  "version": "1.0.0",
+  "description": "Compute tangents for a path of 3D points.",
+  "main": "index.js",
+  "author": "Damien Seguin (https://dmnsgn.me)",
+  "license": "MIT",
+  "dependencies": {
+    "gl-matrix": "^2.8.1"
+  }
+}
