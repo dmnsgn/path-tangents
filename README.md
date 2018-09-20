@@ -1,6 +1,5 @@
-# path-tangents
+# path-tangents [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 [![npm version](https://badge.fury.io/js/path-tangents.svg)](https://www.npmjs.com/package/path-tangents)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
