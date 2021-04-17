@@ -2,17 +2,40 @@
   "name": "path-tangents",
   "version": "1.0.0",
   "description": "Compute tangents for a path of 3D points.",
-  "main": "index.js",
-  "author": "Damien Seguin (https://dmnsgn.me)",
-  "license": "MIT",
-  "repository": "https://github.com/dmnsgn/path-tangents",
   "keywords": [
     "path",
     "spline",
     "tangents",
     "geometry"
   ],
+  "homepage": "https://github.com/dmnsgn/path-tangents",
+  "bugs": "https://github.com/dmnsgn/path-tangents/issues",
+  "repository": "dmnsgn/path-tangents",
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://paypal.me/dmnsgn"
+    },
+    {
+      "type": "individual",
+      "url": "https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3"
+    }
+  ],
+  "license": "MIT",
+  "author": "Damien Seguin (https://github.com/dmnsgn)",
+  "type": "module",
+  "main": "index.js",
+  "types": "types/index.d.ts",
   "dependencies": {
     "gl-matrix": "^2.8.1"
+  },
+  "devDependencies": {
+    "canvas-context": "^3.0.2",
+    "core-js": "^3.10.1",
+    "es-module-shims": "^0.10.4"
+  },
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0"
   }
 }

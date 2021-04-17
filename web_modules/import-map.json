@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "canvas-context": "./canvas-context.js",
+    "core-js": "./core-js.js",
+    "es-module-shims": "./es-module-shims.js",
+    "gl-matrix": "./gl-matrix.js"
+  }
+}
