@@ -37,7 +37,39 @@ const tangents = pathTangents(path, isClosed);
 
 <!-- api-start -->
 
-Auto-generated API content.
+## Functions
+
+<dl>
+<dt><a href="#pathTangents">pathTangents(path, [isClosed])</a> ⇒ <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dd><p>Compute tangents for a path of 3D points.</p>
+</dd>
+</dl>
+
+## Typedefs
+
+<dl>
+<dt><a href="#vec3">vec3</a> : <code>Array.&lt;number&gt;</code></dt>
+<dd></dd>
+</dl>
+
+<a name="pathTangents"></a>
+
+## pathTangents(path, [isClosed]) ⇒ [<code>Array.&lt;vec3&gt;</code>](#vec3)
+
+Compute tangents for a path of 3D points.
+
+**Kind**: global function
+
+| Param      | Type                                     | Default            | Description                    |
+| ---------- | ---------------------------------------- | ------------------ | ------------------------------ |
+| path       | [<code>Array.&lt;vec3&gt;</code>](#vec3) |                    | Array of 3D points [x, y, z].  |
+| [isClosed] | <code>boolean</code>                     | <code>false</code> | Specify if the path is closed. |
+
+<a name="vec3"></a>
+
+## vec3 : <code>Array.&lt;number&gt;</code>
+
+**Kind**: global typedef
 
 <!-- api-end -->
 
