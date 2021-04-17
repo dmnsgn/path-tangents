@@ -27,7 +27,7 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "dependencies": {
-    "gl-matrix": "^2.8.1"
+    "gl-matrix": "^3.3.0"
   },
   "devDependencies": {
     "canvas-context": "^3.0.2",
