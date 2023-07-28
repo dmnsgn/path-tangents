@@ -1,8 +1,10 @@
 {
   "imports": {
+    "pex-math": "./pex-math.js",
     "canvas-context": "./canvas-context.js",
-    "core-js": "./core-js.js",
     "es-module-shims": "./es-module-shims.js",
-    "gl-matrix": "./gl-matrix.js"
+    "es-module-shims/debug": "./es-module-shims/dist/es-module-shims.debug.js",
+    "es-module-shims/wasm": "./es-module-shims/dist/es-module-shims.wasm.js",
+    "tweakpane": "./tweakpane.js"
   }
 }

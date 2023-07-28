@@ -28,15 +28,15 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "dependencies": {
-    "gl-matrix": "^3.3.0"
+    "pex-math": "^4.0.0-alpha.3"
   },
   "devDependencies": {
-    "canvas-context": "^3.0.2",
-    "core-js": "^3.10.1",
-    "es-module-shims": "^0.10.4"
+    "canvas-context": "^3.2.0",
+    "es-module-shims": "^1.8.0",
+    "tweakpane": "^3.1.10"
   },
   "engines": {
-    "node": ">=15.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.6.0"
   }
 }

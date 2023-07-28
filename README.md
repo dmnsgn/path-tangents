@@ -29,8 +29,10 @@ npm install path-tangents
 ```js
 import pathTangents from "path-tangents";
 
-const isClosed = true;
-const tangents = pathTangents(path, isClosed);
+// const path = ...
+
+const closed = true;
+const tangents = pathTangents(path, closed);
 ```
 
 ## API
