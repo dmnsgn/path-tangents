@@ -1,6 +1,6 @@
 {
   "name": "path-tangents",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Compute tangents for a path of 3D points.",
   "keywords": [
     "path",

@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.0.0](https://github.com/dmnsgn/path-tangents/compare/v2.1.0...v3.0.0) (2023-07-28)
+
+
+### Features
+
+* add support for avec3 + change last tangent computation ([6f080f4](https://github.com/dmnsgn/path-tangents/commit/6f080f4e0c88f46d8697fd427435c552b86544cc))
+
+
+### BREAKING CHANGES
+
+* use pex-math
+* add avec support
+* change "closed" behaviour to not imply duplicated points
+
+
+
 # [2.1.0](https://github.com/dmnsgn/path-tangents/compare/v2.0.1...v2.1.0) (2021-10-02)
 
 
