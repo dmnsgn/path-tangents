@@ -42,7 +42,7 @@ const tangents = pathTangents(path, closed);
 ## Functions
 
 <dl>
-<dt><a href="#pathTangents">pathTangents(path, [closed])</a> ⇒ <code>TypedArray</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dt><a href="#pathTangents">pathTangents(path, [closed])</a> ⇒ <code>TypedArray</code> | <code>Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
 <dd><p>Compute tangents for a path of 3D points.</p>
 </dd>
 </dl>
@@ -56,16 +56,16 @@ const tangents = pathTangents(path, closed);
 
 <a name="pathTangents"></a>
 
-## pathTangents(path, [closed]) ⇒ <code>TypedArray</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+## pathTangents(path, [closed]) ⇒ <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
 
 Compute tangents for a path of 3D points.
 
 **Kind**: global function
 
-| Param    | Type                                                                | Default            | Description                                                                                                                       |
-| -------- | ------------------------------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| path     | <code>TypedArray</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3) |                    | Simplicial complex geometry positions (eg. `new Float32Array([x, y, z, x, y, z, ...])` or `new Array([x, y, z], [x, y, z], ...)`) |
-| [closed] | <code>boolean</code>                                                | <code>false</code> | Specify if the path is closed. If so the last tangent will point to the first point. Otherwise it will follow the previous point. |
+| Param    | Type                                                                                      | Default            | Description                                                                                                                                                        |
+| -------- | ----------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| path     | <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3) |                    | Simplicial complex geometry positions (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z, ...)` or `new Array([x, y, z], [x, y, z], ...)`) |
+| [closed] | <code>boolean</code>                                                                      | <code>false</code> | Specify if the path is closed. If so the last tangent will point to the first point. Otherwise it will follow the previous point.                                  |
 
 <a name="vec3"></a>
 

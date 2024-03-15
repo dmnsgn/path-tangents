@@ -1,6 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+# [3.1.0](https://github.com/dmnsgn/path-tangents/compare/v3.0.0...v3.1.0) (2024-03-15)
+
+
+### Features
+
+* add support for flat arrays ([756c48d](https://github.com/dmnsgn/path-tangents/commit/756c48d5d588ac7c1130646ce8602c7d73788404))
+
+
 
 # [3.0.0](https://github.com/dmnsgn/path-tangents/compare/v2.1.0...v3.0.0) (2023-07-28)
 
