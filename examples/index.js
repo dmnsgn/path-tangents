@@ -103,4 +103,4 @@ onResize();
 draw();
 
 const pane = new Pane();
-pane.addInput(CONFIG, "closed");
+pane.addBinding(CONFIG, "closed");
