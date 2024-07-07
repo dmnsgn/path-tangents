@@ -1,6 +1,6 @@
 {
   "name": "path-tangents",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Compute tangents for a path of 3D points.",
   "keywords": [
     "path",
@@ -10,7 +10,10 @@
   ],
   "homepage": "https://github.com/dmnsgn/path-tangents",
   "bugs": "https://github.com/dmnsgn/path-tangents/issues",
-  "repository": "dmnsgn/path-tangents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmnsgn/path-tangents.git"
+  },
   "funding": [
     {
       "type": "individual",
