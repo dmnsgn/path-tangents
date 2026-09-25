@@ -2,6 +2,7 @@
   "name": "path-tangents",
   "version": "4.0.0",
   "description": "Compute tangents for a path of 3D points.",
+  "sideEffects": false,
   "keywords": [
     "path",
     "spline",
@@ -33,8 +34,8 @@
       "default": "./index.js"
     }
   },
-  "main": "index.js",
-  "types": "types/index.d.ts",
+  "main": "./index.js",
+  "types": "./types/index.d.ts",
   "dependencies": {
     "pex-math": "^4.4.0"
   },
@@ -45,7 +46,7 @@
   },
   "engines": {
     "node": ">=22.0.0",
-    "npm": ">=10.5.1",
     "snowdev": ">=3.0.0-alpha.3"
-  }
+  },
+  "packageManager": "npm@10.5.1"
 }
