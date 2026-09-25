@@ -41,7 +41,7 @@ const tangents = pathTangents(path, { closed: true, method: "chordal" });
 ## Functions
 
 <dl>
-<dt><a href="#pathTangents">pathTangents(path, [options])</a> ⇒ <code><a href="#Vec3Array">Vec3Array</a></code></dt>
+<dt><a href="#pathTangents">pathTangents(path, [options])</a> ⇒ <code><a href="#Tangents">Tangents</a></code></dt>
 <dd><p>Compute tangents for a path of 3D points.</p>
 </dd>
 </dl>
@@ -51,9 +51,13 @@ const tangents = pathTangents(path, { closed: true, method: "chordal" });
 <dl>
 <dt><a href="#vec3">vec3</a> : <code>Array.&lt;number&gt;</code></dt>
 <dd></dd>
-<dt><a href="#Vec3Array">Vec3Array</a> : <code>TypedArray</code> | <code>Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
-<dd><p>List of 3D vectors, flat
-  (eg. <code>new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z,   ...)</code>) or nested (eg. <code>new Array([x, y, z], [x, y, z], ...)</code>).</p>
+<dt><a href="#Path">Path</a> : <code>Int8Array</code> | <code>Uint8Array</code> | <code>Uint8ClampedArray</code> | <code>Int16Array</code> | <code>Uint16Array</code> | <code>Int32Array</code> | <code>Uint32Array</code> | <code>Float32Array</code> | <code>Float64Array</code> | <code>Array.&lt;number&gt;</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dd><p>3D points, flat (eg. <code>new Float32Array([x, y, z, x, y, z, ...])/new Array(x,   y, z, x, y, z, ...)</code>) or nested (eg. <code>new Array([x, y, z], [x, y, z],   ...)</code>).</p>
+</dd>
+<dt><a href="#Tangents">Tangents</a> : <code>Float32Array</code> | <code>Float64Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dd><p>Unit tangents in the
+  layout of the path: a Float64Array for Float64Array paths, a Float32Array
+  for other flat paths, vec3[] for nested paths.</p>
 </dd>
 <dt><a href="#Method">Method</a> : <code>&quot;forward&quot;</code> | <code>&quot;uniform&quot;</code> | <code>&quot;centripetal&quot;</code> | <code>&quot;chordal&quot;</code></dt>
 <dd></dd>
@@ -64,31 +68,38 @@ const tangents = pathTangents(path, { closed: true, method: "chordal" });
 
 <a name="pathTangents"></a>
 
-## pathTangents(path, [options]) ⇒ [<code>Vec3Array</code>](#Vec3Array)
+## pathTangents(path, [options]) ⇒ [<code>Tangents</code>](#Tangents)
 
 Compute tangents for a path of 3D points.
 
 **Kind**: global function
-**Returns**: [<code>Vec3Array</code>](#Vec3Array) - Unit tangents, in the same layout
-as `path`.
 
-| Param     | Type                                 | Default         | Description                            |
-| --------- | ------------------------------------ | --------------- | -------------------------------------- |
-| path      | [<code>Vec3Array</code>](#Vec3Array) |                 | Simplicial complex geometry positions. |
-| [options] | [<code>Options</code>](#Options)     | <code>{}</code> |                                        |
+| Param     | Type                             | Default         | Description                            |
+| --------- | -------------------------------- | --------------- | -------------------------------------- |
+| path      | [<code>Path</code>](#Path)       |                 | Simplicial complex geometry positions. |
+| [options] | [<code>Options</code>](#Options) | <code>{}</code> |                                        |
 
 <a name="vec3"></a>
 
 ## vec3 : <code>Array.&lt;number&gt;</code>
 
 **Kind**: global typedef
-<a name="Vec3Array"></a>
+<a name="Path"></a>
 
-## Vec3Array : <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+## Path : <code>Int8Array</code> \| <code>Uint8Array</code> \| <code>Uint8ClampedArray</code> \| <code>Int16Array</code> \| <code>Uint16Array</code> \| <code>Int32Array</code> \| <code>Uint32Array</code> \| <code>Float32Array</code> \| <code>Float64Array</code> \| <code>Array.&lt;number&gt;</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
 
-List of 3D vectors, flat
-(eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z,
-  ...)`) or nested (eg. `new Array([x, y, z], [x, y, z], ...)`).
+3D points, flat (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x,
+  y, z, x, y, z, ...)`) or nested (eg. `new Array([x, y, z], [x, y, z],
+  ...)`).
+
+**Kind**: global typedef
+<a name="Tangents"></a>
+
+## Tangents : <code>Float32Array</code> \| <code>Float64Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+
+Unit tangents in the
+layout of the path: a Float64Array for Float64Array paths, a Float32Array
+for other flat paths, vec3[] for nested paths.
 
 **Kind**: global typedef
 <a name="Method"></a>
