@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.1.1](https://github.com/dmnsgn/path-tangents/compare/v4.1.0...v4.1.1) (2026-09-25)
+
+### Bug Fixes
+
+* use pex-math types ([b7ae87c](https://github.com/dmnsgn/path-tangents/commit/b7ae87cf04bf1373cd505be8b2099ce6a5dce612))
+
 # [4.1.0](https://github.com/dmnsgn/path-tangents/compare/v4.0.1...v4.1.0) (2026-09-25)
 
 ### Features

@@ -49,15 +49,13 @@ const tangents = pathTangents(path, { closed: true, method: "chordal" });
 ## Typedefs
 
 <dl>
-<dt><a href="#vec3">vec3</a> : <code>Array.&lt;number&gt;</code></dt>
-<dd></dd>
-<dt><a href="#Path">Path</a> : <code>Int8Array</code> | <code>Uint8Array</code> | <code>Uint8ClampedArray</code> | <code>Int16Array</code> | <code>Uint16Array</code> | <code>Int32Array</code> | <code>Uint32Array</code> | <code>Float32Array</code> | <code>Float64Array</code> | <code>Array.&lt;number&gt;</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dt><a href="#Path">Path</a> : <code>module:pex-math~TypedArray</code> | <code>Array.&lt;number&gt;</code> | <code>Array.&lt;module:pex-math~Vec3&gt;</code></dt>
 <dd><p>3D points, flat (eg. <code>new Float32Array([x, y, z, x, y, z, ...])/new Array(x,   y, z, x, y, z, ...)</code>) or nested (eg. <code>new Array([x, y, z], [x, y, z],   ...)</code>).</p>
 </dd>
-<dt><a href="#Tangents">Tangents</a> : <code>Float32Array</code> | <code>Float64Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
-<dd><p>Unit tangents in the
-  layout of the path: a Float64Array for Float64Array paths, a Float32Array
-  for other flat paths, vec3[] for nested paths.</p>
+<dt><a href="#Tangents">Tangents</a> : <code>Float32Array</code> | <code>Float64Array</code> | <code>Array.&lt;module:pex-math~Vec3&gt;</code></dt>
+<dd><p>Unit tangents in the layout of the path: a Float64Array for Float64Array
+  paths, a Float32Array for other flat paths, nested arrays for nested
+  paths.</p>
 </dd>
 <dt><a href="#Method">Method</a> : <code>&quot;forward&quot;</code> | <code>&quot;uniform&quot;</code> | <code>&quot;centripetal&quot;</code> | <code>&quot;chordal&quot;</code></dt>
 <dd></dd>
@@ -79,14 +77,9 @@ Compute tangents for a path of 3D points.
 | path      | [<code>Path</code>](#Path)       |                 | Simplicial complex geometry positions. |
 | [options] | [<code>Options</code>](#Options) | <code>{}</code> |                                        |
 
-<a name="vec3"></a>
-
-## vec3 : <code>Array.&lt;number&gt;</code>
-
-**Kind**: global typedef
 <a name="Path"></a>
 
-## Path : <code>Int8Array</code> \| <code>Uint8Array</code> \| <code>Uint8ClampedArray</code> \| <code>Int16Array</code> \| <code>Uint16Array</code> \| <code>Int32Array</code> \| <code>Uint32Array</code> \| <code>Float32Array</code> \| <code>Float64Array</code> \| <code>Array.&lt;number&gt;</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+## Path : <code>module:pex-math~TypedArray</code> \| <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;module:pex-math~Vec3&gt;</code>
 
 3D points, flat (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x,
   y, z, x, y, z, ...)`) or nested (eg. `new Array([x, y, z], [x, y, z],
@@ -95,11 +88,11 @@ Compute tangents for a path of 3D points.
 **Kind**: global typedef
 <a name="Tangents"></a>
 
-## Tangents : <code>Float32Array</code> \| <code>Float64Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+## Tangents : <code>Float32Array</code> \| <code>Float64Array</code> \| <code>Array.&lt;module:pex-math~Vec3&gt;</code>
 
-Unit tangents in the
-layout of the path: a Float64Array for Float64Array paths, a Float32Array
-for other flat paths, vec3[] for nested paths.
+Unit tangents in the layout of the path: a Float64Array for Float64Array
+paths, a Float32Array for other flat paths, nested arrays for nested
+paths.
 
 **Kind**: global typedef
 <a name="Method"></a>
