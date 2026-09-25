@@ -1,26 +1,15 @@
-/** @typedef {number[]} vec3 */
-
 /**
- * @typedef {Int8Array
- *   | Uint8Array
- *   | Uint8ClampedArray
- *   | Int16Array
- *   | Uint16Array
- *   | Int32Array
- *   | Uint32Array
- *   | Float32Array
- *   | Float64Array
- *   | number[]
- *   | vec3[]} Path
+ * @typedef {import("pex-math").TypedArray | number[] | import("pex-math").Vec3[]} Path
  *   3D points, flat (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x,
  *   y, z, x, y, z, ...)`) or nested (eg. `new Array([x, y, z], [x, y, z],
  *   ...)`).
  */
 
 /**
- * @typedef {Float32Array | Float64Array | vec3[]} Tangents Unit tangents in the
- *   layout of the path: a Float64Array for Float64Array paths, a Float32Array
- *   for other flat paths, vec3[] for nested paths.
+ * @typedef {Float32Array | Float64Array | import("pex-math").Vec3[]} Tangents
+ *   Unit tangents in the layout of the path: a Float64Array for Float64Array
+ *   paths, a Float32Array for other flat paths, nested arrays for nested
+ *   paths.
  */
 
 /** @typedef {"forward" | "uniform" | "centripetal" | "chordal"} Method */
