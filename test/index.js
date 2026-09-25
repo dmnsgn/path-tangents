@@ -6,19 +6,15 @@ import computePathTangents from "../index.js";
 const METHODS = ["forward", "uniform", "centripetal", "chordal"];
 const PARABOLA_METHODS = ["uniform", "centripetal", "chordal"];
 
-export function deepAlmostEqual(a, b, epsilon = 0.001) {
-  if (a.length != b.length) throw new Error(`${a} deepAlmostEqual ${b}`);
+export const deepAlmostEqual = (a, b, epsilon = 1e-6) => {
+  assert.equal(a.length, b.length, `${a} != ${b}`);
   for (let i = 0; i < a.length; i++) {
-    if (!Number.isFinite(a[i]) || !Number.isFinite(b[[i]])) {
-      throw new Error(`${a} deepAlmostEqual ${b} not finite`);
-    }
-    if (Math.abs(a[i] - b[i]) > epsilon) {
-      throw new Error(
-        `${a} deepAlmostEqual ${b} (diff=${Math.abs(a[i] - b[i])})`,
-      );
-    }
+    assert.ok(
+      Number.isFinite(a[i]) && Math.abs(a[i] - b[i]) <= epsilon,
+      `[${i}] ${a[i]} != ${b[i]} (±${epsilon})`,
+    );
   }
-}
+};
 
 const normalize = (v) => {
   const l = Math.hypot(...v);
@@ -52,7 +48,8 @@ test("should return the same values for TypedArray or Array of vec3", () => {
       });
       const b = computePathTangents(positions, { closed, method }).flat();
 
-      deepAlmostEqual(a, b);
+      // Float32 input rounding shows on nearly aligned random points
+      deepAlmostEqual(a, b, 1e-3);
     }
   }
 });
@@ -218,6 +215,42 @@ test("should handle straight lines with uneven spacing", () => {
   for (const method of METHODS) {
     computePathTangents(positions, { method }).forEach((t) =>
       deepAlmostEqual(t, normalize([1, 1, 0]), 1e-6),
+    );
+  }
+});
+
+test("should handle long runs of duplicated points in linear time", () => {
+  const size = 100_000;
+  const positions = new Float32Array(size * 3);
+  positions.set([1, 0, 0], (size - 1) * 3);
+
+  const start = performance.now();
+  const tangents = computePathTangents(positions);
+  assert.ok(performance.now() - start < 500, "too slow");
+  deepAlmostEqual(tangents.subarray(0, 3), [1, 0, 0]);
+});
+
+test("should keep double precision for Float64Array paths", () => {
+  const positions = new Float64Array([0, 0, 0, 1, 1e-9, 0, 2, 0, 0]);
+  const tangents = computePathTangents(positions);
+  assert.ok(tangents instanceof Float64Array);
+  assert.ok(computePathTangents([...positions]) instanceof Float32Array);
+});
+
+test("should ignore a closed path last point duplicating the first", () => {
+  const count = 12;
+  const circle = Array.from({ length: count }, (_, i) => {
+    const a = (Math.PI * 2 * i) / count;
+    return [Math.cos(a), Math.sin(a), 0];
+  });
+  for (const method of METHODS) {
+    const expected = computePathTangents(circle, { method, closed: true });
+    const tangents = computePathTangents([...circle, circle[0]], {
+      method,
+      closed: true,
+    });
+    [...expected, expected[0]].forEach((t, i) =>
+      deepAlmostEqual(tangents[i], t),
     );
   }
 });

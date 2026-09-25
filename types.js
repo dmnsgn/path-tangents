@@ -1,9 +1,26 @@
 /** @typedef {number[]} vec3 */
 
 /**
- * @typedef {TypedArray | Array | vec3[]} Vec3Array List of 3D vectors, flat
- *   (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z,
- *   ...)`) or nested (eg. `new Array([x, y, z], [x, y, z], ...)`).
+ * @typedef {Int8Array
+ *   | Uint8Array
+ *   | Uint8ClampedArray
+ *   | Int16Array
+ *   | Uint16Array
+ *   | Int32Array
+ *   | Uint32Array
+ *   | Float32Array
+ *   | Float64Array
+ *   | number[]
+ *   | vec3[]} Path
+ *   3D points, flat (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x,
+ *   y, z, x, y, z, ...)`) or nested (eg. `new Array([x, y, z], [x, y, z],
+ *   ...)`).
+ */
+
+/**
+ * @typedef {Float32Array | Float64Array | vec3[]} Tangents Unit tangents in the
+ *   layout of the path: a Float64Array for Float64Array paths, a Float32Array
+ *   for other flat paths, vec3[] for nested paths.
  */
 
 /** @typedef {"forward" | "uniform" | "centripetal" | "chordal"} Method */

@@ -31,7 +31,7 @@ import pathTangents from "path-tangents";
 
 // const path = ...
 
-const tangents = pathTangents(path, { closed: true, method: "central" });
+const tangents = pathTangents(path, { closed: true, method: "chordal" });
 ```
 
 ## API

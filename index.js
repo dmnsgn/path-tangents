@@ -29,32 +29,47 @@ function parabolaEndTangent(out, i, deltas, a, b) {
   avec3.addScaled(out, i, deltas, 1, -a / (b * (a + b)));
 }
 
-// Duplicated points carry no direction: skip to the nearest distinct one.
-function findNeighbour(points, size, i, step, closed) {
-  for (let k = 1; k < size; k++) {
-    let j = i + step * k;
-    if (closed) j = (j + size) % size;
-    else if (j < 0 || j >= size) return null;
-    if (avec3.distance(points, j, points, i) > 0) return j;
+// Previous and next distinct point of each point, -1 when there is none.
+// Duplicated points reuse the answer of their neighbour.
+function computeNeighbours(points, size, closed) {
+  const prev = new Int32Array(size).fill(-1);
+  const next = new Int32Array(size).fill(-1);
+
+  for (let i = size - 2; i >= 0; i--) {
+    next[i] = avec3.distanceSq(points, i, points, i + 1) ? i + 1 : next[i + 1];
   }
-  return null;
+  for (let i = 1; i < size; i++) {
+    prev[i] = avec3.distanceSq(points, i, points, i - 1) ? i - 1 : prev[i - 1];
+  }
+
+  // Closed paths: the last duplicates continue from the start and vice versa.
+  if (closed && size > 1) {
+    const wrapNext = avec3.distanceSq(points, size - 1, points, 0)
+      ? 0
+      : next[0];
+    const wrapPrev = avec3.distanceSq(points, 0, points, size - 1)
+      ? size - 1
+      : prev[size - 1];
+    for (let i = size - 1; i >= 0 && next[i] === -1; i--) next[i] = wrapNext;
+    for (let i = 0; i < size && prev[i] === -1; i++) prev[i] = wrapPrev;
+  }
+
+  return { prev, next };
 }
 
-function forwardTangent(out, points, size, i, closed) {
-  const next = findNeighbour(points, size, i, 1, closed);
-  if (next !== null) {
-    setDelta(out, i, points, i, next);
-    return;
+function forwardTangent(out, points, { prev, next }, i) {
+  if (next[i] !== -1) {
+    setDelta(out, i, points, i, next[i]);
+  } else if (prev[i] !== -1) {
+    setDelta(out, i, points, prev[i], i);
   }
-  const prev = findNeighbour(points, size, i, -1, closed);
-  if (prev !== null) setDelta(out, i, points, prev, i);
 }
 
-function parabolaTangent(out, points, size, i, closed, spacing) {
-  const prev = findNeighbour(points, size, i, -1, closed);
-  const next = findNeighbour(points, size, i, 1, closed);
+function parabolaTangent(out, points, neighbours, i, spacing) {
+  const prev = neighbours.prev[i];
+  const next = neighbours.next[i];
 
-  if (prev !== null && next !== null) {
+  if (prev !== -1 && next !== -1) {
     setDelta(DELTAS, 0, points, prev, i);
     setDelta(DELTAS, 1, points, i, next);
     const a = spacing(DELTAS, 0);
@@ -71,12 +86,12 @@ function parabolaTangent(out, points, size, i, closed, spacing) {
   }
 
   // Open path ends: one-sided parabola when three distinct points exist.
-  const isStart = next !== null;
+  const isStart = next !== -1;
   const p1 = isStart ? next : prev;
-  if (p1 === null) return;
+  if (p1 === -1) return;
 
-  const p2 = findNeighbour(points, size, p1, isStart ? 1 : -1, closed);
-  if (p2 === null) {
+  const p2 = isStart ? neighbours.next[p1] : neighbours.prev[p1];
+  if (p2 === -1) {
     setDelta(out, i, points, isStart ? i : p1, isStart ? p1 : i);
     return;
   }
@@ -90,11 +105,10 @@ function parabolaTangent(out, points, size, i, closed, spacing) {
 /**
  * Compute tangents for a path of 3D points.
  *
- * @param {import("./types.js").Vec3Array} path Simplicial complex geometry
+ * @param {import("./types.js").Path} path Simplicial complex geometry
  *   positions.
  * @param {import("./types.js").Options} [options={}]
- * @returns {import("./types.js").Vec3Array} Unit tangents, in the same layout
- *   as `path`.
+ * @returns {import("./types.js").Tangents}
  */
 const pathTangents = (path, options) => {
   const { closed = false, method = "chordal" } = { ...options };
@@ -106,17 +120,21 @@ const pathTangents = (path, options) => {
   const points = isFlatArray ? path : new Float64Array(size * 3);
   if (!isFlatArray) path.forEach((point, i) => avec3.set(points, i, point, 0));
 
+  const neighbours = computeNeighbours(points, size, closed);
+
   // Double precision: parabola terms can cancel out before normalisation.
   const tangents = new Float64Array(size * 3);
 
   for (let i = 0; i < size; i++) {
     if (spacing) {
-      parabolaTangent(tangents, points, size, i, closed, spacing);
+      parabolaTangent(tangents, points, neighbours, i, spacing);
     } else {
-      forwardTangent(tangents, points, size, i, closed);
+      forwardTangent(tangents, points, neighbours, i);
     }
     avec3.normalize(tangents, i);
   }
+
+  if (path instanceof Float64Array) return tangents;
 
   return isFlatArray
     ? new Float32Array(tangents)
