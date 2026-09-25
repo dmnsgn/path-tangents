@@ -4,7 +4,9 @@
     "es-module-shims": "./es-module-shims.js",
     "es-module-shims/debug": "./es-module-shims/debug.js",
     "es-module-shims/wasm": "./es-module-shims/wasm.js",
+    "es-module-shims/typescript-transform": "./es-module-shims/typescript-transform.js",
     "pex-math": "./pex-math.js",
-    "tweakpane": "./tweakpane.js"
+    "tweakpane": "./tweakpane.js",
+    "path-tangents": "../index.js"
   }
 }

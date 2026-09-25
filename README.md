@@ -16,7 +16,7 @@ Compute tangents for a path of 3D points.
 [![coinbase](https://img.shields.io/badge/donate-coinbase-informational?logo=coinbase)](https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3)
 [![twitter](https://img.shields.io/twitter/follow/dmnsgn?style=social)](https://twitter.com/dmnsgn)
 
-![](https://raw.githubusercontent.com/dmnsgn/path-tangents/main/screenshot.jpg)
+[![path-tangents screenshot](https://raw.githubusercontent.com/dmnsgn/path-tangents/main/screenshot.gif)](https://dmnsgn.github.io/path-tangents/)
 
 ## Installation
 
@@ -31,8 +31,7 @@ import pathTangents from "path-tangents";
 
 // const path = ...
 
-const closed = true;
-const tangents = pathTangents(path, closed);
+const tangents = pathTangents(path, { closed: true, method: "central" });
 ```
 
 ## API

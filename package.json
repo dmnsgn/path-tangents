@@ -36,16 +36,16 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "dependencies": {
-    "pex-math": "^4.1.0"
+    "pex-math": "^4.4.0"
   },
   "devDependencies": {
-    "canvas-context": "^3.3.0",
-    "es-module-shims": "^1.10.0",
-    "tweakpane": "^4.0.4"
+    "canvas-context": "^3.3.1",
+    "es-module-shims": "^2.8.4",
+    "tweakpane": "^4.0.5"
   },
   "engines": {
     "node": ">=22.0.0",
     "npm": ">=10.5.1",
-    "snowdev": ">=2.2.x"
+    "snowdev": ">=3.0.0-alpha.3"
   }
 }
