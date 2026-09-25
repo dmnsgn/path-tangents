@@ -90,9 +90,11 @@ function parabolaTangent(out, points, size, i, closed, spacing) {
 /**
  * Compute tangents for a path of 3D points.
  *
- * @param {import("./types.js").Vec3Array} path Simplicial complex geometry positions.
+ * @param {import("./types.js").Vec3Array} path Simplicial complex geometry
+ *   positions.
  * @param {import("./types.js").Options} [options={}]
- * @returns {import("./types.js").Vec3Array} Unit tangents, in the same layout as `path`.
+ * @returns {import("./types.js").Vec3Array} Unit tangents, in the same layout
+ *   as `path`.
  */
 const pathTangents = (path, options) => {
   const { closed = false, method = "chordal" } = { ...options };

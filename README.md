@@ -41,7 +41,7 @@ const tangents = pathTangents(path, { closed: true, method: "central" });
 ## Functions
 
 <dl>
-<dt><a href="#pathTangents">pathTangents(path, [closed])</a> ⇒ <code>TypedArray</code> | <code>Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dt><a href="#pathTangents">pathTangents(path, [options])</a> ⇒ <code><a href="#Vec3Array">Vec3Array</a></code></dt>
 <dd><p>Compute tangents for a path of 3D points.</p>
 </dd>
 </dl>
@@ -51,26 +51,64 @@ const tangents = pathTangents(path, { closed: true, method: "central" });
 <dl>
 <dt><a href="#vec3">vec3</a> : <code>Array.&lt;number&gt;</code></dt>
 <dd></dd>
+<dt><a href="#Vec3Array">Vec3Array</a> : <code>TypedArray</code> | <code>Array</code> | <code><a href="#vec3">Array.&lt;vec3&gt;</a></code></dt>
+<dd><p>List of 3D vectors, flat
+  (eg. <code>new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z,   ...)</code>) or nested (eg. <code>new Array([x, y, z], [x, y, z], ...)</code>).</p>
+</dd>
+<dt><a href="#Method">Method</a> : <code>&quot;forward&quot;</code> | <code>&quot;uniform&quot;</code> | <code>&quot;centripetal&quot;</code> | <code>&quot;chordal&quot;</code></dt>
+<dd></dd>
+<dt><a href="#Options">Options</a> : <code>object</code></dt>
+<dd><p>Options for tangents computation. All optional.</p>
+</dd>
 </dl>
 
 <a name="pathTangents"></a>
 
-## pathTangents(path, [closed]) ⇒ <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+## pathTangents(path, [options]) ⇒ [<code>Vec3Array</code>](#Vec3Array)
 
 Compute tangents for a path of 3D points.
 
 **Kind**: global function
+**Returns**: [<code>Vec3Array</code>](#Vec3Array) - Unit tangents, in the same layout
+as `path`.
 
-| Param    | Type                                                                                      | Default            | Description                                                                                                                                                        |
-| -------- | ----------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| path     | <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3) |                    | Simplicial complex geometry positions (eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z, ...)` or `new Array([x, y, z], [x, y, z], ...)`) |
-| [closed] | <code>boolean</code>                                                                      | <code>false</code> | Specify if the path is closed. If so the last tangent will point to the first point. Otherwise it will follow the previous point.                                  |
+| Param     | Type                                 | Default         | Description                            |
+| --------- | ------------------------------------ | --------------- | -------------------------------------- |
+| path      | [<code>Vec3Array</code>](#Vec3Array) |                 | Simplicial complex geometry positions. |
+| [options] | [<code>Options</code>](#Options)     | <code>{}</code> |                                        |
 
 <a name="vec3"></a>
 
 ## vec3 : <code>Array.&lt;number&gt;</code>
 
 **Kind**: global typedef
+<a name="Vec3Array"></a>
+
+## Vec3Array : <code>TypedArray</code> \| <code>Array</code> \| [<code>Array.&lt;vec3&gt;</code>](#vec3)
+
+List of 3D vectors, flat
+(eg. `new Float32Array([x, y, z, x, y, z, ...])/new Array(x, y, z, x, y, z,
+  ...)`) or nested (eg. `new Array([x, y, z], [x, y, z], ...)`).
+
+**Kind**: global typedef
+<a name="Method"></a>
+
+## Method : <code>&quot;forward&quot;</code> \| <code>&quot;uniform&quot;</code> \| <code>&quot;centripetal&quot;</code> \| <code>&quot;chordal&quot;</code>
+
+**Kind**: global typedef
+<a name="Options"></a>
+
+## Options : <code>object</code>
+
+Options for tangents computation. All optional.
+
+**Kind**: global typedef
+**Properties**
+
+| Name     | Type                           | Default                          | Description                                                                                          |
+| -------- | ------------------------------ | -------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [closed] | <code>boolean</code>           | <code>false</code>               | Specify if the path is closed. If so the last point connects back to the first one.                  |
+| [method] | [<code>Method</code>](#Method) | <code>&quot;chordal&quot;</code> | Tangent estimation method: - "forward": direction of the segment starting at each point. - "uniform" | "centripetal" | "chordal": derivative of the parabola through each point and its two neighbours, parametrised like Catmull-Rom splines. "uniform" assumes evenly spaced points, "chordal" follows segment lengths and handles uneven spacing best, "centripetal" sits in between and gives the corner bisector on polylines. |
 
 <!-- api-end -->
 

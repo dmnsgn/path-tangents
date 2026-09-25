@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+# [4.0.0](https://github.com/dmnsgn/path-tangents/compare/v3.1.1...v4.0.0) (2026-09-25)
+
+### Features
+
+* add uniform/centripetal/chordal parabola tangents + duplicate point and fold handling + types.js ([e6b5632](https://github.com/dmnsgn/path-tangents/commit/e6b56327fecd297f998a9d0a5594da3371febbcc))
+
+### BREAKING CHANGES
+
+* `pathTangents(path, closed)` is now `pathTangents(path, { closed, method })` and the default method is "chordal" instead of "forward".
+
 ## [3.1.1](https://github.com/dmnsgn/path-tangents/compare/v3.1.0...v3.1.1) (2024-07-07)
 
 
