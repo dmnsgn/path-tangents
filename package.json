@@ -1,8 +1,7 @@
 {
   "name": "path-tangents",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Compute tangents for a path of 3D points.",
-  "sideEffects": false,
   "keywords": [
     "path",
     "spline",
@@ -27,6 +26,7 @@
   ],
   "license": "MIT",
   "author": "Damien Seguin (https://github.com/dmnsgn)",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -44,9 +44,9 @@
     "es-module-shims": "^2.8.4",
     "tweakpane": "^4.0.5"
   },
+  "packageManager": "npm@10.5.1",
   "engines": {
     "node": ">=22.0.0",
     "snowdev": ">=3.0.0-alpha.3"
-  },
-  "packageManager": "npm@10.5.1"
+  }
 }

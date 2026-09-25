@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.1](https://github.com/dmnsgn/path-tangents/compare/v4.0.0...v4.0.1) (2026-09-25)
+
 # [4.0.0](https://github.com/dmnsgn/path-tangents/compare/v3.1.1...v4.0.0) (2026-09-25)
 
 ### Features
