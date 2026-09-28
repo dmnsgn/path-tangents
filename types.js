@@ -12,6 +12,20 @@
  *   paths.
  */
 
+/**
+ * @typedef {object} Neighbours Previous and next distinct point of each point,
+ *   -1 when there is none.
+ * @property {Int32Array} prev
+ * @property {Int32Array} next
+ */
+
+/**
+ * @callback Spacing Parameter spacing between two consecutive points.
+ * @param {import("pex-math").TypedArray} deltas Flat deltas between points.
+ * @param {number} i Index of the delta.
+ * @returns {number}
+ */
+
 /** @typedef {"forward" | "uniform" | "centripetal" | "chordal"} Method */
 
 /**

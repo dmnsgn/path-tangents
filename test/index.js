@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import computePathTangents from "../index.js";
+import computePathTangents, { computeNeighbours } from "../index.js";
 
 const METHODS = ["forward", "uniform", "centripetal", "chordal"];
 const PARABOLA_METHODS = ["uniform", "centripetal", "chordal"];
@@ -253,4 +253,15 @@ test("should ignore a closed path last point duplicating the first", () => {
       deepAlmostEqual(tangents[i], t),
     );
   }
+});
+
+test("should export the distinct neighbours of each point", () => {
+  const points = [0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0];
+  const open = computeNeighbours(points, 5, false);
+  assert.deepEqual([...open.prev], [-1, -1, 1, 2, 3]);
+  assert.deepEqual([...open.next], [2, 2, 3, 4, -1]);
+  // Closed: the last point duplicating the first continues from the start
+  const closed = computeNeighbours(points, 5, true);
+  assert.deepEqual([...closed.prev], [3, 3, 1, 2, 3]);
+  assert.deepEqual([...closed.next], [2, 2, 3, 4, 2]);
 });
